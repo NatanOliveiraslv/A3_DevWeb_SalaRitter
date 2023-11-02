@@ -1,0 +1,12 @@
+.form{
+   display: flex;
+   height: 53vh;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-content: center;
+   justify-content: flex-start;
+}
+
+.form label{
+   text-align: left;
+}
