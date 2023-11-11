@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Login</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <script src="https://kit.fontawesome.com/183bf5daea.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="image-container" style="background-image: url({% static 'imagens/imagemIndex.jpg' %});">
+    </div>
+    <div class="formulario">
+      <div class="login-form">
+        <h1>Bem Vindo</h1>
+        <form action="" method="POST">
+          <div class="clearfix">
+            <label class="label-input">
+              <i class="fa-solid fa-user icon-modify"></i>
+              <input type="text" id="user" name="user" placeholder="Digite seu usuário" required>
+            </label>
+            <label class="label-input">
+              <i class="fa-solid fa-key icon-modify"></i>
+              <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </label>
+            <button type="submit">Entrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
