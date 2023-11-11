@@ -1,0 +1,4 @@
+db.sqlite3
+modeloapp/__pycache__/*
+/apps/pages/__pycache__/*
+/apps/pages/migrations/*
