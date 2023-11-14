@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from pages.models import Aluno, Professor
+from usuarios.models import Aluno, Professor
 from django.contrib.auth.models import User
 
 def validaProfessor():
