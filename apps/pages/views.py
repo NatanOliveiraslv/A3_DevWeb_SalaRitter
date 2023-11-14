@@ -24,4 +24,4 @@ def index(request):
     elif validaAluno():
         return render(request, 'usuarios/painel_aluno.html')
     else:
-        return render(request, 'usuarios/index.html')
+        return render(request, 'usuarios/login.html')
