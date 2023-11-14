@@ -17,11 +17,12 @@
     <div class="formulario">
       <div class="login-form">
         <h1>Bem Vindo</h1>
-        <form action="" method="POST">
+        <form method="POST">
+          {% csrf_token %}
           <div class="clearfix">
             <label class="label-input">
               <i class="fa-solid fa-user icon-modify"></i>
-              <input type="text" id="user" name="user" placeholder="Digite seu usuário" required>
+              <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
             </label>
             <label class="label-input">
               <i class="fa-solid fa-key icon-modify"></i>
