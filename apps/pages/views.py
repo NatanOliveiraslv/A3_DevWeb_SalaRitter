@@ -2,8 +2,7 @@ from django.shortcuts import redirect, render
 from usuarios.models import Aluno, Professor
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.contrib import messages
 
 #Funçao para validar se o usuário está vinculado ao model Professor
 def validaProfessor(usuario):
@@ -33,7 +32,8 @@ def index(request):
             login(request, user) #loga o usuário
             return redirect('painel') # redireciona para o link /painel
         else:
-            return render(request, 'usuarios/login.html')
+            messages.error(request, 'Usuário ou senha incorreto!') 
+            return redirect('index')
     else:
         return render(request, 'usuarios/login.html')
 
@@ -49,6 +49,8 @@ def painelUsuario(request):
         elif validaAluno(usuario):
             return render(request, 'usuarios/painel_aluno.html')
         else:
-            return HttpResponse("Usuario nao encotrado, ou nao está vinculado!")
+            messages.error(request, 'Usuário não encotrado, ou nao está vinculado!')
+            return redirect('index')
     else:
-        return HttpResponse("Usuário não autenticado. Faça o login para acessar esta página.")
+        messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+        return redirect('index')

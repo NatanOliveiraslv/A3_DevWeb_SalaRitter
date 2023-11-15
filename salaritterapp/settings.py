@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'usuarios.apps.UsuariosConfig',
+    'turma.apps.TurmaConfig',
 ]
 
 MIDDLEWARE = [
