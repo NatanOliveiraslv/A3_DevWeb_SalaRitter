@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'usuarios.apps.UsuariosConfig',
     'turma.apps.TurmaConfig',
+    'materia.apps.MateriaConfig'
 ]
 
 MIDDLEWARE = [
