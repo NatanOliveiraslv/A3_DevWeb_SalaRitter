@@ -1,0 +1,8 @@
+asgiref @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/asgiref_1699497449686/work
+Django @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/django_1699555153998/work
+psycopg2-binary==2.9.9
+python-decouple==3.8
+setuptools==68.0.0
+sqlparse @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/sqlparse_1699544474746/work
+tzdata @ file:///croot/python-tzdata_1690578112552/work
+wheel==0.41.2
