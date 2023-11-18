@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,11 +11,10 @@
 <body>
 
   <div id="menu">
-      <h3 style="color:rgb(2, 87, 2); text-align: center;">Minhas turmas</h3>
-    <a href="#">Turma 201</a>
-    <a href="#">Turma 202</a>
-    <a href="#">Turma 203</a>
-    <a href="#">Turma 304</a>
+    <h3 style="color:rgb(2, 87, 2); text-align: center;">Minhas turmas</h3>
+    {% for turmas in turma %}
+    <a href="#">{{turmas}}</a>
+    {% endfor %}
     <!-- Adicione mais itens conforme necessário -->
   </div>
 

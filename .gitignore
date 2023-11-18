@@ -1,6 +1,9 @@
 db.sqlite3
-modeloapp/__pycache__/*
 /apps/pages/__pycache__/*
 /apps/pages/migrations/*
 /apps/usuarios/__pycache__/*
 /apps/usuarios/migrations/*
+/apps/turma/__pycache__/*
+/apps/turma/migrations/*
+/apps/materia/__pycache__/*
+/apps/materia/migrations/*
