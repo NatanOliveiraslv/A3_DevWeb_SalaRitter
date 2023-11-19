@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render
 from usuarios.models import Aluno, Professor
 from materia.models import Materia
+from turma.models import Turma
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 #Funçao para validar se o usuário está vinculado ao model Professor
 def validaProfessor(usuario):
@@ -43,10 +45,13 @@ def painelUsuario(request):
     if request.user.is_authenticated:
         # Acessar informações do usuário
         usuario = request.user.username
-        #verifca para qual pagina o usuário irá ser enviado. Se for aluno para a do aluno
-        # se professor para a dor professor.
+        #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
         if validaProfessor(usuario):
-            turma = Materia.objects.all().filter(professor=Professor.objects.get(user=User.objects.get(username=usuario)))
+            # Obtém o professor associado ao usuário autenticado
+            professor_autenticado = get_object_or_404(Professor, user=request.user)
+            # Obtém todas as turmas onde o professor é o mesmo que o associado à matéria
+            turma = Turma.objects.filter(materias__professor = professor_autenticado).distinct()
+
             return render(request, 'usuarios/painel_professor.html', {'turma':turma})
         elif validaAluno(usuario):
             return render(request, 'usuarios/painel_aluno.html')
@@ -56,3 +61,6 @@ def painelUsuario(request):
     else:
         messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
         return redirect('index')
+
+def painelTurmas(request, turma_id):
+    return render(request, 'usuarios/painel_turmas_professor.html', {''})

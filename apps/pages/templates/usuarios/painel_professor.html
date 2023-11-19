@@ -13,10 +13,9 @@
   <div id="menu">
     <h3 style="color:rgb(2, 87, 2); text-align: center;">Minhas turmas</h3>
     {% for turmas in turma %}
-    <a href="#">{{turmas}}</a>
+    <a href="{% url 'painelTurmas' turmas.id %}">{{turmas.turma}}</a>
     {% endfor %}
     <!-- Adicione mais itens conforme necessário -->
   </div>
-
 </body>
 </html>
