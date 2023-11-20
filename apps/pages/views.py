@@ -68,6 +68,18 @@ def painelUsuario(request):
         return redirect('index')
 
 def painelTurmas(request, turma_id):
-    #da requisção passado captura o id da turma
-    turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
-    return render(request, 'usuarios/painel_turmas_professor.html', {'turma':turma})
+    # se o usuário estiver logado
+    if request.user.is_authenticated:
+        # Acessar informações do usuário
+        usuario = request.user.username
+        #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
+        if validaProfessor(usuario):
+            #da requisção passado captura o id da turma
+            turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
+            return render(request, 'usuarios/painel_turmas_professor.html', {'turma':turma})
+        else:
+            messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
+            return redirect('index')
+    else:
+        messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+        return redirect('index')
