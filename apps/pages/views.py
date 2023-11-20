@@ -76,7 +76,7 @@ def painelTurmas(request, turma_id):
         if validaProfessor(usuario):
             #da requisção passado captura o id da turma
             turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
-            return render(request, 'usuarios/painel_turmas_professor.html', {'turma':turma})
+            return render(request, 'usuarios/tela_controle_professor.html', {'turma':turma})
         else:
             messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
             return redirect('index')
