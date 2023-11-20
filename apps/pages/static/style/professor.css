@@ -20,15 +20,6 @@ body {
     text-align: center;
 }
 
-#menu h1{
-    color: white;
-    background-color: #75DA73;
-    height: 100px; 
-    text-align: center;
-    margin: 0px;
-   
-}
-
 #menu a {
     padding: 15px;
     text-decoration: none;
@@ -47,3 +38,17 @@ body {
     padding: 16px;
 }
   
+.titulo{
+    color: white;
+    background-color: #75DA73;
+    height: 100px; 
+    text-align: center;
+    margin: 0px;
+}
+
+.titulo h1{
+    margin: 0px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50);
+}
