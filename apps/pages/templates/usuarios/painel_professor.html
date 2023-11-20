@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu Lateral</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'style/menu.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style/professor.css' %}">
   
 </head>
 <body>
 
   <div id="menu">
-    <h3 style="color:rgb(2, 87, 2); text-align: center;">Minhas turmas</h3>
+    <h1>SalaRitter</h1>
+    <h3>Minhas turmas</h3>
     {% for turmas in turma %}
     <a href="{% url 'painelTurmas' turmas.id %}">{{turmas.turma}}</a>
     {% endfor %}
