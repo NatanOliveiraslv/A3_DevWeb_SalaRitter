@@ -8,4 +8,4 @@ class Materia(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.materia, self.professor
+        return f'{self.materia} - {self.professor.nome}'
