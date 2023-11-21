@@ -1,4 +1,5 @@
 db.sqlite3
+.env
 /apps/pages/__pycache__/*
 /apps/pages/migrations/*
 /apps/usuarios/__pycache__/*

@@ -53,12 +53,12 @@ def painelUsuario(request):
             professor_autenticado = get_object_or_404(Professor, user=request.user)
             # Obtém todas as turmas onde o professor é o mesmo que o associado à matéria
             turma = Turma.objects.filter(materias__professor = professor_autenticado).distinct() #Está funçao distinct() serve para que nao seja inserdo n variavel turmas iguais
-            return render(request, 'usuarios/painel_professor.html', {'turma':turma})     
+            return render(request, 'usuarios/professor/painel_professor.html', {'turma':turma})     
         elif validaAluno(usuario):
             # Se for aluno, envia para o painel do aluno
             aluno_autenticado = get_object_or_404(Aluno, user=request.user).turma
             materia = aluno_autenticado.materias.all()
-            return render(request, 'usuarios/painel_aluno.html', {'materia':materia})
+            return render(request, 'usuarios/aluno/painel_aluno.html', {'materia':materia})
         else:
             # Este erro iá ocorre se o usuário nao estiver vinculado a nenhum professor ou aluno
             messages.error(request, 'Usuário não encotrado, ou nao está vinculado!')
@@ -76,7 +76,7 @@ def painelTurmas(request, turma_id):
         if validaProfessor(usuario):
             #da requisção passado captura o id da turma
             turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
-            return render(request, 'usuarios/tela_controle_professor.html', {'turma':turma})
+            return render(request, 'usuarios/professor/tela_controle_professor.html', {'turma':turma})
         else:
             messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
             return redirect('index')
