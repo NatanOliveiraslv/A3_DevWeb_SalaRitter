@@ -18,7 +18,6 @@ body {
 #menu a {
     padding: 15px;
     text-decoration: none;
-    font-size: 18px;
     color: #000000;
     display: block;
     text-align: center;
@@ -52,4 +51,14 @@ body {
     color: #757575;
     padding: 5px 5px;
 
+  }
+
+   img {
+    float: left;
+    margin-right: 10px;
+    width: 20   x; /* Defina a largura conforme necessário */
+    height: 20px; /* Defina a altura conforme necessário */
+    background: url('2799070.png') center/cover no-repeat;
+    display: grid;
+    place-items: center; /* alinha horizontal e verticalmente */
   }
