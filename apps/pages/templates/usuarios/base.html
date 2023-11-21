@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="{% static 'imagens/favicon.png' %}">
+  <title>{% block title %}SalaRitter{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style/painelMenu.css' %}">
+</head>
+<body>
+
+    {% block content %}{% endblock %}
+    
+</body>
+</html>

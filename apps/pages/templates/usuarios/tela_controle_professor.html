@@ -1,32 +1,34 @@
 <!DOCTYPE html>
+{% extends 'usuarios/base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Lateral</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'style/controleprof.css' %}">
-  <script src="https://kit.fontawesome.com/183bf5daea.js" crossorigin="anonymous"></script>
-  </head>
-<body>
-  <div id="menu">
-    <div class="titulo">    
-      <h1>SalaRitter</h1>
-    </div>
-    <a href="#">
-    <div class="elemento-com-imagem">
-        <img src="{% static 'imagens/2799070.png' %}" alt="Descrição da imagem">
-    </div>Lista Alunos</a>
-    <a href="#"> 
-    <div class="elemento-com-imagem">
-        <img src="{% static 'imagens/modificar.png' %}" alt="Descrição da imagem">
-        Cadastrar Atividades</a>
-    <a href="#"> 
-    <div class="elemento-com-imagem">
-      <img src="{% static 'imagens/atividade.png' %}" alt="Descrição da imagem">
-      Atividades Realizadas</a>   
-    <!-- Adicione mais itens conforme necessário -->
-  </div>
 
-</body>
-</html>
+{% block title %}
+  Painel Turma
+{% endblock %}
+
+{% block content %}
+  <div id="menu">
+    <div class="titulo">
+      <h1>SalaRitter<br>{{turma.turma}}</h1>
+    </div>
+    <div id="opcoes">
+      <a href="#">
+        <div class="elemento-com-imagem">
+          <img src="{% static 'imagens/aluno.png' %}" alt="Descrição da imagem" />
+        </div>Lista Alunos
+      </a>
+
+      <a href="#">
+        <div class="elemento-com-imagem">
+          <img src="{% static 'imagens/modificar.png' %}" alt="Descrição da imagem" />
+        </div>Cadastrar Atividades
+      </a>
+
+      <a href="#">
+        <div class="elemento-com-imagem">
+          <img src="{% static 'imagens/atividade.png' %}" alt="Descrição da imagem" />
+        </div>Atividades Realizadas
+      </a>
+    </div>
+  </div>
+{% endblock %}

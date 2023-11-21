@@ -1,14 +1,9 @@
-<!DOCTYPE html>
+{% extends 'usuarios/base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Lateral</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'style/professor.css' %}">
-  
-</head>
-<body>
+
+{% block title %}Turmas{% endblock %}
+
+{% block content %}
 
   <div id="menu">
     <div class="titulo">    
@@ -20,5 +15,5 @@
     {% endfor %}
     <!-- Adicione mais itens conforme necessário -->
   </div>
-</body>
-</html>
+
+{% endblock %}
