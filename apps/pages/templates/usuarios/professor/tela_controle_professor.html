@@ -7,29 +7,7 @@
 {% endblock %}
 
 {% block content %}
-  <div id="menu">
-    <div class="titulo">
-      <h1>SalaRitter<br>{{turma.turma}}</h1>
-    </div>
-    <div id="opcoes">
-      <a href="#">
-        <div class="elemento-com-imagem">
-          <img src="{% static 'imagens/aluno.png' %}" alt="Descrição da imagem" />
-        </div>Lista Alunos
-      </a>
+  
+{% include "partials/menuControle.html" %}
 
-      <a href="#">
-        <div class="elemento-com-imagem">
-          <img src="{% static 'imagens/modificar.png' %}" alt="Descrição da imagem" />
-        </div>Cadastrar Atividades
-      </a>
-
-      <div class="elemento-com-imagem">
-      <a href="#">
-          <img src="{% static 'imagens/atividade.png' %}" alt="Descrição da imagem" />
-        Atividades Realizadas
-      </a>
-    </div>
-    </div>
-  </div>
 {% endblock %}

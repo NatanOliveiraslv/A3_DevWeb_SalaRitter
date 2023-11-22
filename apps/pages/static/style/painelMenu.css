@@ -18,7 +18,7 @@ body {
     align-items: center;
 }
 
-#menu h3{
+#menu h3 {
     color: #104E00;
     text-align: center;
     padding: 20px
@@ -41,15 +41,15 @@ body {
     padding: 16px;
 }
 
-.titulo{
+.titulo {
     color: white;
     background-color: #75DA73;
-    height: 100px; 
+    height: 100px;
     text-align: center;
     margin: 0px;
 }
 
-.titulo h1{
+.titulo h1 {
     margin: 0px;
     position: relative;
     top: 50%;
@@ -74,5 +74,34 @@ img {
     text-decoration: none;
     color: #000000;
     display: block;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.divTableAluno {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh; 
+    padding-left: 200px;
+}
+
+table {
+    width: 55%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: left;
+}
+
+.topoTabela{
+    background-color: #75DA73;
     text-align: center;
 }

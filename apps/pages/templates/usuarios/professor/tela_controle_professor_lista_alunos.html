@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block title %}
+  Painel Turma
+{% endblock %}
+
+{% block content %}
+
+{% include "partials/menuControle.html" %}
+
+<div class="table table-striped divTableAluno">
+  <table border="1">
+    <thead class="topoTabela">
+    <tr>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>E-mail</th>
+    </tr>
+    </thead>
+    {% for alunos in aluno %}
+      <tr>
+        <td>{{alunos.nome }}</td>
+        <td>{{alunos.sobrenome }}</td>
+        <td>{{alunos.email }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
