@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'pages.apps.PagesConfig',
     'usuarios.apps.UsuariosConfig',
     'turma.apps.TurmaConfig',
-    'materia.apps.MateriaConfig'
+    'materia.apps.MateriaConfig',
 ]
 
 MIDDLEWARE = [

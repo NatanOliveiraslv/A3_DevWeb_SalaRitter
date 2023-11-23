@@ -98,7 +98,6 @@ def painelTurmasListaAlunos(request, turma_id):
                 #da requisção passado captura o id da turma
                 turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
                 aluno = Aluno.objects.all().filter(turma=turma) #atribui a variavel todos os alunos da turma
-                print(aluno)
                 return render(request, 'usuarios/professor/tela_controle_professor_lista_alunos.html', {'turma':turma,
                                                                                                         'aluno':aluno})
             else:

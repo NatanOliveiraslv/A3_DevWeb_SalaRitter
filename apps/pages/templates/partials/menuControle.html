@@ -5,17 +5,19 @@
     <h1>SalaRitter<br />{{ turma.turma }}</h1>
   </div>
   <div id="opcoes">
-    <a href="{% url 'listaAlunos' turma.id %}">
-      <div class="elemento-com-imagem">
+    <div class="elemento-com-imagem">
+      <a href="{% url 'listaAlunos' turma.id %}">
         <img src="{% static 'imagens/aluno.png' %}" alt="Descrição da imagem" />
-      </div>Lista Alunos
-    </a>
+        Lista Alunos
+      </a>
+    </div>
 
-    <a href="#">
-      <div class="elemento-com-imagem">
+    <div class="elemento-com-imagem">
+      <a href="#">
         <img src="{% static 'imagens/modificar.png' %}" alt="Descrição da imagem" />
-      </div>Cadastrar Atividades
-    </a>
+        Cadastrar Atividades
+      </a>
+    </div>
 
     <div class="elemento-com-imagem">
       <a href="#">

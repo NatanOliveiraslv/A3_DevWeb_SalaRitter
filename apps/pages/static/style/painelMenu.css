@@ -25,15 +25,17 @@ body {
 }
 
 #menu a {
-    padding: 15px;
-    text-decoration: none;
-    color: #000000;
+    color: black;
     display: block;
+    height: 45px;
+    padding: 8px;
+    padding-left: 12px;
     text-align: center;
 }
 
 #menu a:hover {
     background-color: white;
+    border-radius: 30px;
 }
 
 #content {
@@ -68,24 +70,16 @@ img {
 }
 
 #opcoes a {
-    padding: 15px;
-    padding-top: 40px;
-    padding-bottom: 50px;
-    text-decoration: none;
     color: #000000;
     display: block;
-    text-align: center;
-    display: flex;
-    align-items: center;
 }
 
 .divTableAluno {
     flex-grow: 1;
     padding: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 20vh; 
+    height: 20vh;
     padding-left: 200px;
 }
 
@@ -101,7 +95,13 @@ td {
     text-align: left;
 }
 
-.topoTabela{
+.topoTabela {
     background-color: #75DA73;
     text-align: center;
+}
+
+.elemento-com-imagem {
+    padding: 30px;
+    display: block;
+    padding-left: 10px;
 }
