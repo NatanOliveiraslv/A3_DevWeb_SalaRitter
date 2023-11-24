@@ -106,13 +106,14 @@ td {
     padding-left: 10px;
 }
 
-/* Aqui é o CSS do painel do aluno*/ 
+/* Aqui é o CSS do painel do aluno*/
 
-.sidebar {     
-    border-radius:3px;
+.sidebar {
+    border-radius: 3px;
     width: 200px;
-    padding:10px; 
+    padding: 10px;
 }
+
 #menu {
     height: 100vh;
     width: 250px;
@@ -126,6 +127,63 @@ td {
     text-align: center;
     padding: 20px
 }
+
 ul {
     list-style-type: none;
-  }
+}
+
+.form {
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    margin-top: 35px;
+}
+
+.form label {
+    text-align: left;
+}
+
+.form input{
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 45px;
+    padding: 12px;
+}
+
+.form textarea {
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 220px;
+    padding: 12px;
+    width: 500px;
+}
+
+.form textarea#description {
+    height: 220px;
+    resize: none;
+}
+
+.form select {
+    padding-left: 10px;
+    border-radius: 20px;
+    height: 45px;
+}
+
+.form select,
+option {
+    text-align: center;
+}
+
+.form button {
+    border-radius: 20px;
+    height: 40px;
+    background-color: #75DA73;
+    color: white;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: unset;
+}

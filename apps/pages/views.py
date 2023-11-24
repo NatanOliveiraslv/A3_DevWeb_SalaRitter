@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from .forms import AtividadeForm
 
 #Funçao para validar se o usuário está vinculado ao model Professor
 def validaProfessor(usuario):
@@ -100,6 +101,27 @@ def painelTurmasListaAlunos(request, turma_id):
                 aluno = Aluno.objects.all().filter(turma=turma) #atribui a variavel todos os alunos da turma
                 return render(request, 'usuarios/professor/tela_controle_professor_lista_alunos.html', {'turma':turma,
                                                                                                         'aluno':aluno})
+            else:
+                messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
+                return redirect('index')
+
+def painelTurmasCadastraAtividade(request, turma_id):
+    # se o usuário estiver logado
+    if(validaLogin(request)):
+            # Acessar informações do usuário
+            usuario = request.user.username
+            #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
+            if validaProfessor(usuario):
+                if request.method == 'POST':
+                    form = AtividadeForm(request.POST)
+                    if form.is_valid():
+                        form.save()
+                        return redirect('sucesso')  # Redirecionar para uma página de sucesso
+                else:
+                    form = AtividadeForm()
+                    turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
+                    return render(request, 'usuarios/professor/tela_controle_professor_cadatra_atividade.html', {'turma':turma,
+                                                                                                                 'form': form})
             else:
                 messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
                 return redirect('index')

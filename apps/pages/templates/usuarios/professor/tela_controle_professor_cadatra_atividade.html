@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block title %}
+  Painel Turma
+{% endblock %}
+
+{% block content %}
+  {% include 'partials/menuControle.html' %}
+
+  <div class="table table-striped divTableAluno">
+    <div class="form">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
