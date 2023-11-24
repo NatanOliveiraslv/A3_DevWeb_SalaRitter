@@ -1,4 +1,3 @@
-from operator import truediv
 from django.db import models
 from materia.models import Materia
 from usuarios.models import Aluno
@@ -14,7 +13,7 @@ class Atividade(models.Model):
 class AtividadeConcluida(models.Model):
     resposta = models.TextField()
     atividade = models.ForeignKey(Atividade, on_delete=models.CASCADE, null=True)
-    aluno = models.ForeignKey(Atividade, on_delete=models.CASCADE, null=True)
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.resposta
