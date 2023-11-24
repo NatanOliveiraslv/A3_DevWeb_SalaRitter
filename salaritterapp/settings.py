@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
     'turma.apps.TurmaConfig',
     'materia.apps.MateriaConfig',
+    'atividades.apps.AtividadesConfig',    
 ]
 
 MIDDLEWARE = [
