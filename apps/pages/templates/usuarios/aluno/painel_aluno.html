@@ -1,4 +1,37 @@
-Estou no aluno
+<!DOCTYPE html>
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block title %}
+  Painel Turma
+{% endblock %}
+
+{% block content %}
+
+<div id="menu">
+    <div class="titulo">    
+      <h1>Turma 201</h1>
+    </div>
+    <h3>Atividades</h3>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#"><i class=></i> História</a></li>
+            <li><a href="#"><i class=></i> Matemática</a></li>
+            <li><a href="#"><i class=></i> Português</a></li>
+            <li><a href="#"><i class=></i> Geografia</a></li>
+            <li><a href="#"><i class=></i> Espanhol</a></li>
+            <li><a href="#"><i class=></i> Informática</a></li>
+            <li><a href="#"><i class=></i> Biologia</a></li>
+        </ul>
+    </nav>
+    {% for turmas in turma %}
+    <a href="{% url 'painelTurmas' turmas.id %}">{{turmas.turma}}</a>
+    {% endfor %}
+    <!-- Adicione mais itens conforme necessário -->
+  </div>
+
+{% endblock %}
+
 
 {% for materias in materia %}
 {{materias.materia}}
