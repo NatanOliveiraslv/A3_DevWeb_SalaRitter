@@ -54,7 +54,7 @@ def index(request):
         return render(request, 'usuarios/login.html')
 
 def painelUsuario(request):
-    # se o usuário estiver logado
+     # se o usuário estiver logado
     if(validaLogin(request)):
         # Acessar informações do usuário
         usuario = request.user.username
@@ -74,6 +74,9 @@ def painelUsuario(request):
             # Este erro iá ocorre se o usuário nao estiver vinculado a nenhum professor ou aluno
             messages.error(request, 'Usuário não encotrado, ou nao está vinculado!')
             return redirect('index')
+    else:
+        messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+        return redirect('index')
         
 def painelTurmas(request, turma_id):
     # se o usuário estiver logado
