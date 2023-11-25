@@ -15,13 +15,9 @@
     <h3>Atividades</h3>
     <nav class="sidebar">
         <ul>
-            <li><a href="#"><i class=></i> História</a></li>
-            <li><a href="#"><i class=></i> Matemática</a></li>
-            <li><a href="#"><i class=></i> Português</a></li>
-            <li><a href="#"><i class=></i> Geografia</a></li>
-            <li><a href="#"><i class=></i> Espanhol</a></li>
-            <li><a href="#"><i class=></i> Informática</a></li>
-            <li><a href="#"><i class=></i> Biologia</a></li>
+            {% for materias in materia  %}
+            <li><a href="#"><i class=></i> {{materias.materia}}</a></li>
+            {%endfor%}
         </ul>
     </nav>
     {% for turmas in turma %}
