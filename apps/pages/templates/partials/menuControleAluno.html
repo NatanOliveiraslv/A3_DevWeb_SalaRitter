@@ -1,0 +1,17 @@
+{% load static %}
+
+<div id="menu">
+    <div class="titulo">
+      <h1>{{turma}}</h1>
+    </div>
+    <h3>Matéria</h3>
+    <nav class="sidebar">
+      <ul>
+        {% for materias in materia %}
+          <li>
+            <a href="{{materia.id}}"><i></i> {{ materias.materia }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>

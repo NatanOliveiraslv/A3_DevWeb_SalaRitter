@@ -10,45 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="menu">
-    <div class="titulo">    
-      <h1>Turma 201</h1>
-    </div>
-    <h3>Matéria</h3>
-    <nav class="sidebar">
-        <ul>
-          {% for materias in materia %}
-            <li><a href="#"><i></i> {{materias.materia}}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
-    {% for turmas in turma %}
-    <a href="{% url 'painelTurmas' turmas.id %}">{{ turmas.turma }}</a>
-    {% endfor %}
-</div>
 
-<div class="cabecalho">
-  <h1> Atividades </h1>
-</div>
-
-<div class="center-content">
-  <div class="atividades-alunos">
-    <button class="dropbtn">História do Brasil</button>
-    <div class="atividade-conteudo">
-      <div class="questao">
-        <p>Pergunta: Qual foi o ano do Descobrimento do Brasil?</p>
-      </div>
-      <div class="answer-form">
-        <label for="resposta">Sua Resposta:</label>
-        <input type="text" id="resposta" name="resposta" placeholder="Digite sua resposta...">
-        <button id="enviarBtn">Enviar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-{% for materias in materia %}
-  {{ materias.materia }}
-{% endfor %}
+{% include 'partials/menuControleAluno.html' %}
 
 {% endblock %}

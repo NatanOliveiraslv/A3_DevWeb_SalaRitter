@@ -1,0 +1,49 @@
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block title %}
+  Painel Turma
+{% endblock %}
+
+{% block css %}
+  {% static 'style/painel_aluno.css' %}
+{% endblock %}
+
+{% block content %}
+
+
+{% include 'partials/menuControleAluno.html' %}
+
+<div class="center-content">
+  <h1>Atividades</h1>
+</div>
+
+  <div class="center-content">
+    <div class="atividades-alunos">
+      <button class="dropbtn" onclick="toggleDisplay()">História do Brasil<div class="arrow"></div></button>
+      <div class="atividade-conteudo" id="conteudo" style="display: none;">
+        <div class="questao">
+          <p>Pergunta: Qual foi o ano do Descobrimento do Brasil?</p>
+        </div>
+        <div class="answer-form">
+          <textarea type="text" id="resposta" name="resposta" placeholder="Digite sua resposta..."></textarea>
+          <button id="enviarBtn">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleDisplay() {
+      var conteudoDiv = document.getElementById('conteudo')
+    
+      // Alterna entre display block e none
+      if (conteudoDiv.style.display === 'none') {
+        conteudoDiv.style.display = 'block'
+      } else {
+        conteudoDiv.style.display = 'none'
+      }
+    }
+  </script>
+
+{% endblock %}

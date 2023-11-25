@@ -66,10 +66,10 @@ ul {
 }
 
 .center-content {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 20vh;
+    padding-left: 200px;
 }
 
 .atividades-alunos {
@@ -86,17 +86,9 @@ ul {
     cursor: pointer;
 }
 
-.atividade-conteudo {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-}
 
 .questao {
-    padding: 10px;
+    padding: 25px;
     margin: 0;
 }
 
@@ -117,62 +109,62 @@ input {
 }
 
 #enviarBtn {
-    background-color: #49d0e2;
-    color: white;
     padding: 5px;
-    border: none;
     cursor: pointer;
-    border-radius: 60%;
     display: block;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #69C9FF;
+    color: white;
+    width: 200px;
     margin: 0 auto;
+    margin-top: 20px;
+    border: unset;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.atividades-alunos:hover .atividade-conteudo {
-    display: block;
+#enviarBtn:focus{
+    outline: none;
 }
 
 .atividade-conteudo {
     display: none;
-    position: absolute;
-    background-color: #f9f9f9;
     border-radius: 5%;
-    border: #75DA73;
     min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
+    padding: 10px;
 }
-.atividades-alunos .dropbtn {
-    background-color: #666e72;
-    color: white;
+
+.dropbtn {
+    background-color: #EAEAEA;
+    color: black;
     padding: 10px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 90px;
+    border-radius: 18px;
+    width: 700px;
+    height: 55px;
+    font-size: 21px;
 }
 
 .atividades-alunos .dropbtn:focus {
-    outline: none;
-    box-shadow: 0 0 0 5px rgba(16, 228, 79, 0.3); /* Ajuste a cor e a largura da borda conforme necessário */
+    border: unset;
 }
 
-.atividade-conteudo {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.cabecalho {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.center-content h1{
+    padding-top: 20px;
     height: 15vh;
     color: #104E00;
+}
+
+.dropbtn:focus {
+    outline: none
+}
+
+#resposta{
+    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    border-color: #75DA73;
 }
