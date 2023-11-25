@@ -2,14 +2,14 @@
 
 <div id="menu">
     <div class="titulo">
-      <h1>{{turma}}</h1>
+      <h1>{{turma.turma}}</h1>
     </div>
     <h3>Matéria</h3>
     <nav class="sidebar">
       <ul>
         {% for materias in materia %}
           <li>
-            <a href="{{materia.id}}"><i></i> {{ materias.materia }}</a>
+            <a href="{% url 'materiaAtividades' materias.id %}"><i></i> {{ materias.materia }}</a>
           </li>
         {% endfor %}
       </ul>

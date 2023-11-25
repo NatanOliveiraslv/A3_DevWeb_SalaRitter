@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from usuarios.models import Aluno, Professor
 from materia.models import Materia
 from turma.models import Turma
+from atividades.models import Atividade
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -95,7 +96,6 @@ def painelTurmasListaAlunos(request, turma_id):
             #da requisção passado captura o id da turma
             turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
             aluno = Aluno.objects.all().filter(turma=turma) #atribui a variavel todos os alunos da turma
-            print(aluno)
             return render(request, 'usuarios/professor/tela_controle_professor_lista_alunos.html', {'turma':turma,
                                                                                                     'aluno':aluno})
         else:
@@ -129,20 +129,22 @@ def painelTurmasCadastraAtividade(request, turma_id):
         messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
         return redirect('index')
 
-""""
 def painelAlunoMateriaSelecao(request, materia_id):
      # se o usuário estiver logado
     if request.user.is_authenticated:
             # Acessar informações do usuário
             usuario = request.user.username
-            #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
+            #verifca se o usuário passado realmente é aluno, ou se está vinculado a um aluno
             if validaAluno(usuario):
-                
+                aluno_autenticado = get_object_or_404(Aluno, user=request.user).turma #atribui a varaivel a turma do aluno autenticado
+                materia = aluno_autenticado.materias.all() #atribui a variavel todas as meterias da turma do aluno
+                atividade = Atividade.objects.filter(materia__id=materia_id, turma=aluno_autenticado)
+                return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado,
+                                                                                            'materia':materia,
+                                                                                            'atividade':atividade})
             else:
                 messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
                 return redirect('index')
     else:
         messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
         return redirect('index')
-
-"""

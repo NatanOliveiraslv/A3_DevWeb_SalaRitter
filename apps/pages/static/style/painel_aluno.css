@@ -70,6 +70,7 @@ ul {
     display: flex;
     justify-content: center;
     padding-left: 200px;
+    padding-bottom: 30px;
 }
 
 .atividades-alunos {
@@ -151,7 +152,11 @@ input {
     border: unset;
 }
 
-.center-content h1{
+.titulo-atividade{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 200px;
     padding-top: 20px;
     height: 15vh;
     color: #104E00;

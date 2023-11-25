@@ -9,4 +9,5 @@ urlpatterns = [
     path('painel/turma/<int:turma_id>', views.painelTurmas , name='painelTurmas'),
     path('painel/turma/alunos/<int:turma_id>', views.painelTurmasListaAlunos , name='listaAlunos'),
     path('painel/turma/cadastar_atividades/<int:turma_id>', views.painelTurmasCadastraAtividade , name='CadastraAtividade'),
+    path('painel/turma/alunos/atividades/<int:materia_id>', views.painelAlunoMateriaSelecao, name='materiaAtividades')
 ]
