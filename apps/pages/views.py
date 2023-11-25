@@ -54,8 +54,8 @@ def index(request):
         return render(request, 'usuarios/login.html')
 
 def painelUsuario(request):
-     # se o usuário estiver logado
-    if(validaLogin(request)):
+    # se o usuário estiver logado
+    if request.user.is_authenticated:
         # Acessar informações do usuário
         usuario = request.user.username
         #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
@@ -80,7 +80,7 @@ def painelUsuario(request):
         
 def painelTurmas(request, turma_id):
     # se o usuário estiver logado
-    if(validaLogin(request)):
+    if request.user.is_authenticated:
         # Acessar informações do usuário
         usuario = request.user.username
         #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
@@ -91,26 +91,33 @@ def painelTurmas(request, turma_id):
         else:
             messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
             return redirect('index')
+    else:
+        messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+        return redirect('index')
 
 def painelTurmasListaAlunos(request, turma_id):
     # se o usuário estiver logado
-    if(validaLogin(request)):
-            # Acessar informações do usuário
-            usuario = request.user.username
-            #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
-            if validaProfessor(usuario):
-                #da requisção passado captura o id da turma
-                turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
-                aluno = Aluno.objects.all().filter(turma=turma) #atribui a variavel todos os alunos da turma
-                return render(request, 'usuarios/professor/tela_controle_professor_lista_alunos.html', {'turma':turma,
-                                                                                                        'aluno':aluno})
-            else:
-                messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
-                return redirect('index')
+    if request.user.is_authenticated:
+        # Acessar informações do usuário
+        usuario = request.user.username
+        #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
+        if validaProfessor(usuario):
+            #da requisção passado captura o id da turma
+            turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
+            aluno = Aluno.objects.all().filter(turma=turma) #atribui a variavel todos os alunos da turma
+            print(aluno)
+            return render(request, 'usuarios/professor/tela_controle_professor_lista_alunos.html', {'turma':turma,
+                                                                                                    'aluno':aluno})
+        else:
+            messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
+            return redirect('index')
+    else:
+        messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+        return redirect('index')
 
 def painelTurmasCadastraAtividade(request, turma_id):
     # se o usuário estiver logado
-    if(validaLogin(request)):
+    if request.user.is_authenticated:
             # Acessar informações do usuário
             usuario = request.user.username
             #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
@@ -128,3 +135,6 @@ def painelTurmasCadastraAtividade(request, turma_id):
             else:
                 messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
                 return redirect('index')
+    else:
+        messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+        return redirect('index')
