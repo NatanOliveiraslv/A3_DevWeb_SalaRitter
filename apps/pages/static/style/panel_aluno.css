@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#menu {
+    height: 100vh;
+    width: 250px;
+    background-color: #E7E7E7;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    align-items: center;
+}
+
+#menu h3 {
+    color: #104E00;
+    text-align: center;
+    padding: 20px;
+}
+
+#menu a {
+    color: black;
+    display: block;
+    height: 45px;
+    padding: 8px;
+    padding-left: 12px;
+    text-align: center;
+}
+
+#menu a:hover {
+    background-color: white;
+    border-radius: 30px;
+}
+
+.titulo {
+    color: white;
+    background-color: #75DA73;
+    height: 100px;
+    text-align: center;
+    margin: 0;
+}
+
+.titulo h1 {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: unset;
+}
+
+.sidebar {
+    border-radius: 3px;
+    width: 200px;
+    padding: 10px;
+    list-style-type: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+.atividades-alunos {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #666e72;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.atividade-conteudo {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.questao {
+    padding: 10px;
+    margin: 0;
+}
+
+.answer-form {
+    padding: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#enviarBtn {
+    background-color: #49d0e2;
+    color: white;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 60%;
+    display: block;
+    margin: 0 auto;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.atividades-alunos:hover .atividade-conteudo {
+    display: block;
+}
+
+.atividade-conteudo {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 5%;
+    border: #75DA73;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.atividades-alunos .dropbtn {
+    background-color: #666e72;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 90px;
+}
+
+.atividades-alunos .dropbtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(16, 228, 79, 0.3); /* Ajuste a cor e a largura da borda conforme necessário */
+}
+
+.atividade-conteudo {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    color: #104E00;
+}
