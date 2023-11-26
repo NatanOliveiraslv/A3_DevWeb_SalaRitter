@@ -22,8 +22,8 @@
 
   <div class="center-content">
     <div class="atividades-alunos">
-      <button class="dropbtn" onclick="toggleDisplay()">{{atividades.titulo}}<div class="arrow"></div></button>
-      <div class="atividade-conteudo" id="conteudo" style="display: none;">
+      <button class="dropbtn" onclick="toggleContent(this)">{{atividades.titulo}}</button>
+      <div class="atividade-conteudo" id="conteudo">
         <div class="questao">
           <p>{{atividades.descricao}}</p>
         </div>
@@ -37,15 +37,15 @@
 {% endfor %}
 
 <script>
-  function toggleDisplay() {
-    var conteudoDiv = document.getElementById('conteudo')
-  
-    // Alterna entre display block e none
-    if (conteudoDiv.style.display === 'none') {
-      conteudoDiv.style.display = 'block'
-    } else {
-      conteudoDiv.style.display = 'none'
-    }
+  function toggleContent(button) {
+      // Encontra a div pai do botão
+      var parentDiv = button.parentElement;
+
+      // Encontra a div filha com a classe 'atividade-conteudo' dentro da div pai
+      var content = parentDiv.querySelector('.atividade-conteudo');
+
+      // Alterna a classe 'active' na div
+      content.classList.toggle('active');
   }
 </script>
 

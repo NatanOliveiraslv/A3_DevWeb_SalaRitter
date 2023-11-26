@@ -5,7 +5,7 @@ from turma.models import Turma
 
 class Atividade(models.Model):
     titulo = models.CharField(max_length=100)
-    descricao = models.TextField()
+    descricao = models.TextField(null=True)
     materia = models.ForeignKey(Materia, on_delete=models.CASCADE, null=True)
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE, null=True)
 

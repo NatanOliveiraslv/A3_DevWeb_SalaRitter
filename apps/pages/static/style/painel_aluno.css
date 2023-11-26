@@ -135,6 +135,10 @@ input {
     padding: 10px;
 }
 
+.atividade-conteudo.active {
+    display: block;
+}
+
 .dropbtn {
     background-color: #EAEAEA;
     color: black;
@@ -173,3 +177,4 @@ input {
     padding: 20px;
     border-color: #75DA73;
 }
+

@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from .forms import AtividadeForm
 
 #Funçao para validar se o usuário está vinculado ao model Professor
 def validaProfessor(usuario):
@@ -112,16 +111,27 @@ def painelTurmasCadastraAtividade(request, turma_id):
             usuario = request.user.username
             #verifca se o usuário passado realmente é professor, ou se está vinculado a um professor
             if validaProfessor(usuario):
+                turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
+                #se a requisiçao for POST         
                 if request.method == 'POST':
-                    form = AtividadeForm(request.POST)
-                    if form.is_valid():
-                        form.save()
-                        return redirect('sucesso')  # Redirecionar para uma página de sucesso
+                    #obtem os dados passado pelo professor
+                    titulo = request.POST.get("titulo")
+                    descricao = request.POST.get("descricao")
+                    professor_autenticado = Professor.objects.get(user=User.objects.get(username=usuario)) #atribui a varaivel o professor autenticado
+                    materia = Materia.objects.get(professor = professor_autenticado) #atribui a varaivel a materia do profeesor autenticado
+                    # cria uma nova atividade
+                    nova_atividade = Atividade.objects.create(
+                        titulo=titulo,
+                        descricao=descricao,
+                        materia=materia,
+                        turma=turma,
+                    )
+
+                    nova_atividade.save()
+                    messages.success(request, 'Atividade cadastrada com sucesso!') 
+                    return render(request, 'usuarios/professor/tela_controle_professor_cadatra_atividade.html', {'turma':turma})
                 else:
-                    form = AtividadeForm()
-                    turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
-                    return render(request, 'usuarios/professor/tela_controle_professor_cadatra_atividade.html', {'turma':turma,
-                                                                                                                 'form': form})
+                    return render(request, 'usuarios/professor/tela_controle_professor_cadatra_atividade.html', {'turma':turma})
             else:
                 messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
                 return redirect('index')
