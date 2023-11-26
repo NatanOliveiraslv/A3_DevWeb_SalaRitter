@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from usuarios.models import Aluno, Professor
 from materia.models import Materia
 from turma.models import Turma
-from atividades.models import Atividade
+from atividades.models import Atividade, AtividadeConcluida
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -146,12 +146,41 @@ def painelAlunoMateriaSelecao(request, materia_id):
             usuario = request.user.username
             #verifca se o usuário passado realmente é aluno, ou se está vinculado a um aluno
             if validaAluno(usuario):
-                aluno_autenticado = get_object_or_404(Aluno, user=request.user).turma #atribui a varaivel a turma do aluno autenticado
-                materia = aluno_autenticado.materias.all() #atribui a variavel todas as meterias da turma do aluno
-                atividade = Atividade.objects.filter(materia__id=materia_id, turma=aluno_autenticado)
-                return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado,
-                                                                                            'materia':materia,
-                                                                                            'atividade':atividade})
+                
+                aluno_autenticado = get_object_or_404(Aluno, user=request.user) #atribui a varaivel o aluno autenticado
+                aluno_autenticado_turma = aluno_autenticado.turma #atribui a varaivel a turma do aluno autenticado
+                materia = aluno_autenticado_turma.materias.all() #atribui a variavel todas as meterias da turma do aluno
+                atividade = Atividade.objects.filter(materia__id=materia_id, turma=aluno_autenticado_turma)
+
+                if request.method == 'POST':
+                    resposta = request.POST.get("resposta") # Atribui a variavel a resposta passada
+                    atividade_resposta = get_object_or_404(Atividade, pk=request.POST.get("id"))# Atribui a variavel a Atividade, conforme o ID da atividfade passado na request
+                    
+                    #if para validar se o aluno já entregou a atividades, e se caso entregue, apenas redireciona ele para mesma pagina
+                    if(AtividadeConcluida.objects.all().filter(atividade = atividade_resposta, aluno = aluno_autenticado).first() is not None):
+                        messages.error(request, 'Esta atividade já foi respondida')
+                        print(AtividadeConcluida.objects.filter(atividade = atividade_resposta, aluno = aluno_autenticado) )
+                        return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado_turma,
+                                                                                                'materia':materia,
+                                                                                                'atividade':atividade})
+                    #Caso nao tenha sido entregue a atividade, crea uma nova atividade conculida.
+                    else:
+                        atividade_concluida = AtividadeConcluida.objects.create(
+                            resposta=resposta,
+                            atividade=atividade_resposta,
+                            aluno=aluno_autenticado,
+                        )
+                        atividade_concluida.save()
+
+                        messages.success(request, 'Resposta enviada com sucesso!') 
+                        return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado_turma,
+                                                                                                    'materia':materia,
+                                                                                                    'atividade':atividade})
+                #Se nao for Post a request
+                else:
+                    return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado_turma,
+                                                                                                'materia':materia,
+                                                                                                'atividade':atividade})
             else:
                 messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
                 return redirect('index')

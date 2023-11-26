@@ -86,6 +86,8 @@ img {
 table {
     width: 55%;
     border-collapse: collapse;
+    border-radius: 25px;
+    overflow: hidden;
 }
 
 th,

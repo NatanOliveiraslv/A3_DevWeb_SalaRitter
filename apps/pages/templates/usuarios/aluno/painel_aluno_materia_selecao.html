@@ -10,43 +10,50 @@
 {% endblock %}
 
 {% block content %}
+  {% include 'partials/menuControleAluno.html' %}
 
+  <div class="titulo-atividade">
+    <h1>Atividades</h1>
+  </div>
 
-{% include 'partials/menuControleAluno.html' %}
-
-<div class="titulo-atividade">
-  <h1>Atividades</h1>
-</div>
-
-{% for atividades in atividade %}
-
-  <div class="center-content">
-    <div class="atividades-alunos">
-      <button class="dropbtn" onclick="toggleContent(this)">{{atividades.titulo}}</button>
-      <div class="atividade-conteudo" id="conteudo">
-        <div class="questao">
-          <p>{{atividades.descricao}}</p>
-        </div>
-        <div class="answer-form">
-          <textarea type="text" id="resposta" name="resposta" placeholder="Digite sua resposta..."></textarea>
-          <button id="enviarBtn">Enviar</button>
+  {% for atividades in atividade %}
+    <div class="center-content">
+      <div class="atividades-alunos">
+        <button class="dropbtn" onclick="toggleContent(this)">{{ atividades.titulo }}</button>
+        <div class="atividade-conteudo" id="conteudo">
+          <div class="questao">
+            <p>{{ atividades.descricao }}</p>
+          </div>
+          <form method="post">
+            {% csrf_token %}
+            <div class="answer-form">
+              <textarea type="text" id="resposta" name="resposta" placeholder="Digite sua resposta..."></textarea>
+              <input type="hidden" name="id" value={{atividades.id}}>
+              <button id="enviarBtn">Enviar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
 
-<script>
-  function toggleContent(button) {
+  <script>
+    function toggleContent(button) {
       // Encontra a div pai do botão
-      var parentDiv = button.parentElement;
-
+      var parentDiv = button.parentElement
+    
       // Encontra a div filha com a classe 'atividade-conteudo' dentro da div pai
-      var content = parentDiv.querySelector('.atividade-conteudo');
-
+      var content = parentDiv.querySelector('.atividade-conteudo')
+    
       // Alterna a classe 'active' na div
-      content.classList.toggle('active');
-  }
+      content.classList.toggle('active')
+    }
+  </script>
+
+  <script>
+    {% for message in messages %}
+        alert("{{message}}");
+    {% endfor %}
 </script>
 
 {% endblock %}

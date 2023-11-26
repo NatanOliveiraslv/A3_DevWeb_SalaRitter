@@ -8,3 +8,5 @@ db.sqlite3
 /apps/turma/migrations/*
 /apps/materia/__pycache__/*
 /apps/materia/migrations/*
+/apps/atividades/__pycache__/*
+/apps/atividades/migrations/*
