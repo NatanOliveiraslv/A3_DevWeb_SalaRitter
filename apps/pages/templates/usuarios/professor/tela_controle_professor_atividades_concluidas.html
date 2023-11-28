@@ -6,34 +6,39 @@
 {% endblock %}
 
 {% block content %}
-{% include 'partials/menuControle.html' %}
+  {% include 'partials/menuControle.html' %}
 
-  {% for atividades in atividade %}
-    <div class="center-content">
-      <div class="atividades-alunos">
-        <button class="dropbtn" onclick="toggleContent(this)">{{ atividades.titulo }}</button>
-        <div class="atividade-conteudo" id="conteudo">
-            <div class="table table-striped divTableAluno">
-                <table border="1">
-                  <thead class="topoTabela">
+  <div class="atividades-professor">
+    <!-- for para exxibir as atividades cadastradas pelo professor -->
+    {% for atividades in atividade %}
+      <div class="center-content">
+        <div class="atividades-alunos">
+          <button class="dropbtn" onclick="toggleContent(this)">{{ atividades.titulo }}</button>
+          <div class="atividade-conteudo" id="conteudo">
+            <div class="table table-striped divTableAtividades">
+              <table border="1">
+                <thead class="topoTabela">
                   <tr>
-                    <th>Nome</th>
+                    <th>Nome do aluno</th>
                     <th>Resposta</th>
                   </tr>
-                  </thead>
-                  {% for alunos in atividades %}
-
+                </thead>
+                <!-- for para comprar se as atividades cadastradas pelo professor é igual as astividades realizadas pelo alunos-->
+                {% for atividade_conluidas in atividade_conluida %}
+                  {% if atividade_conluidas.atividade.id == atividades.id %}
                     <tr>
-                      <td>{{alunos.nome }}</td>
-                      <td>{{alunos.resposta }}</td>
+                      <td>{{ atividade_conluidas.aluno.nome }}</td>
+                      <td>{{ atividade_conluidas.resposta }}</td>
                     </tr>
-                  {% endfor %}
-                </table>
+                  {% endif %}
+                {% endfor %}
+              </table>
             </div>
+          </div>
         </div>
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 
   <script>
     function toggleContent(button) {
@@ -53,5 +58,4 @@
         alert("{{message}}");
     {% endfor %}
 </script>
-
 {% endblock %}

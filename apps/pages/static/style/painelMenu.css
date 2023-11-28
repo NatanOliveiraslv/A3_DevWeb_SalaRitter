@@ -302,3 +302,19 @@ input {
     padding-left: 200px;
     padding-bottom: 30px;
 }
+
+.divTableAtividades {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.divTableAtividades table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.atividades-professor{
+    padding-top: 20px;
+}

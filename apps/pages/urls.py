@@ -10,5 +10,5 @@ urlpatterns = [
     path('painel/turma/alunos/<int:turma_id>', views.painelTurmasListaAlunos , name='listaAlunos'),
     path('painel/turma/cadastar_atividades/<int:turma_id>', views.painelTurmasCadastraAtividade , name='CadastraAtividade'),
     path('painel/turma/alunos/atividades/<int:materia_id>', views.painelAlunoMateriaSelecao, name='materiaAtividades'),
-    path('painel/turma/alunos/atividades_concluidas/<int:turma_id>', views.PainelTurmasAtividadesConcuidas, name='AtividadeConcluidas'),
+    path('painel/turma/alunos/atividades_concluidas/<int:turma_id>', views.PainelTurmasAtividadesConcluidas, name='AtividadeConcluidas'),
 ]

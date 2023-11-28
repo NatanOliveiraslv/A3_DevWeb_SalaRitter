@@ -190,7 +190,7 @@ def painelAlunoMateriaSelecao(request, materia_id):
         messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
         return redirect('index')
 
-def PainelTurmasAtividadesConcuidas(request,turma_id):
+def PainelTurmasAtividadesConcluidas(request,turma_id):
     # se o usuário estiver logado
     if request.user.is_authenticated:
             # Acessar informações do usuário
@@ -202,14 +202,11 @@ def PainelTurmasAtividadesConcuidas(request,turma_id):
                 professor_autenticado = get_object_or_404(Professor, user=request.user)
                 materia_professor = Materia.objects.get(professor=professor_autenticado)
                 atividade_professor = Atividade.objects.all().filter(materia=materia_professor, turma=turma)
-                dados_atividades = []
+                atividade_conluida = AtividadeConcluida.objects.all()
 
-                for atividade in atividade_professor:
-                    alunos = AtividadeConcluida.objects.filter(atividade=atividade).values_list('aluno_nome', flat=True)
-                    dados_atividades.append({'atividade': atividade, 'alunos': alunos})
-                context = {'dados+atividades': dados_atividades}
-
-                return render(request, 'usuarios/professor/tela_controle_professor_atividades_concluidas.html', context)
+                return render(request, 'usuarios/professor/tela_controle_professor_atividades_concluidas.html', {'atividade': atividade_professor,
+                                                                                                                 'atividade_conluida': atividade_conluida,
+                                                                                                                 'turma': turma})
             else:
                 messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
                 return redirect('index')
