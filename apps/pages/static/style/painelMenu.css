@@ -189,3 +189,116 @@ option {
     margin-top: 40px;
     border: unset;
 }
+
+.atividades-alunos {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #666e72;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.questao {
+    padding: 25px;
+    margin: 0;
+}
+
+.answer-form {
+    padding: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#enviarBtn {
+    padding: 5px;
+    cursor: pointer;
+    display: block;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #69C9FF;
+    color: white;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: unset;
+}
+
+#enviarBtn:focus{
+    outline: none;
+}
+
+.atividade-conteudo {
+    display: none;
+    border-radius: 5%;
+    min-width: 200px;
+    z-index: 1;
+    padding: 10px;
+}
+
+.atividade-conteudo.active {
+    display: block;
+}
+
+.dropbtn {
+    background-color: #EAEAEA;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 18px;
+    width: 700px;
+    height: 55px;
+    font-size: 21px;
+}
+
+.atividades-alunos .dropbtn:focus {
+    border: unset;
+}
+
+.titulo-atividade{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 200px;
+    padding-top: 20px;
+    height: 15vh;
+    color: #104E00;
+}
+
+.dropbtn:focus {
+    outline: none
+}
+
+#resposta{
+    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    border-color: #75DA73;
+}
+
+.center-content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-left: 200px;
+    padding-bottom: 30px;
+}

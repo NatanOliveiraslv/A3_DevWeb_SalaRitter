@@ -1,0 +1,57 @@
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block title %}
+  Painel Turma
+{% endblock %}
+
+{% block content %}
+{% include 'partials/menuControle.html' %}
+
+  {% for atividades in atividade %}
+    <div class="center-content">
+      <div class="atividades-alunos">
+        <button class="dropbtn" onclick="toggleContent(this)">{{ atividades.titulo }}</button>
+        <div class="atividade-conteudo" id="conteudo">
+            <div class="table table-striped divTableAluno">
+                <table border="1">
+                  <thead class="topoTabela">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Resposta</th>
+                  </tr>
+                  </thead>
+                  {% for alunos in atividades %}
+
+                    <tr>
+                      <td>{{alunos.nome }}</td>
+                      <td>{{alunos.resposta }}</td>
+                    </tr>
+                  {% endfor %}
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <script>
+    function toggleContent(button) {
+      // Encontra a div pai do botão
+      var parentDiv = button.parentElement
+    
+      // Encontra a div filha com a classe 'atividade-conteudo' dentro da div pai
+      var content = parentDiv.querySelector('.atividade-conteudo')
+    
+      // Alterna a classe 'active' na div
+      content.classList.toggle('active')
+    }
+  </script>
+
+  <script>
+    {% for message in messages %}
+        alert("{{message}}");
+    {% endfor %}
+</script>
+
+{% endblock %}

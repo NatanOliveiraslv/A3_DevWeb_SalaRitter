@@ -1,3 +1,5 @@
+from multiprocessing import context
+import re
 from django.shortcuts import redirect, render
 from usuarios.models import Aluno, Professor
 from materia.models import Materia
@@ -187,3 +189,30 @@ def painelAlunoMateriaSelecao(request, materia_id):
     else:
         messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
         return redirect('index')
+
+def PainelTurmasAtividadesConcuidas(request,turma_id):
+    # se o usuário estiver logado
+    if request.user.is_authenticated:
+            # Acessar informações do usuário
+            usuario = request.user.username
+            #verifca se o usuário passado realmente é aluno, ou se está vinculado a um aluno
+            if validaProfessor(usuario):
+                #da requisção passado captura o id da turma
+                turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
+                professor_autenticado = get_object_or_404(Professor, user=request.user)
+                materia_professor = Materia.objects.get(professor=professor_autenticado)
+                atividade_professor = Atividade.objects.all().filter(materia=materia_professor, turma=turma)
+                dados_atividades = []
+
+                for atividade in atividade_professor:
+                    alunos = AtividadeConcluida.objects.filter(atividade=atividade).values_list('aluno_nome', flat=True)
+                    dados_atividades.append({'atividade': atividade, 'alunos': alunos})
+                context = {'dados+atividades': dados_atividades}
+
+                return render(request, 'usuarios/professor/tela_controle_professor_atividades_concluidas.html', context)
+            else:
+                messages.error(request, 'Usuário nao atorizado à acessar a pagina.')
+                return redirect('index')
+    else:
+            messages.error(request, 'Usuário não autenticado. Faça o login para acessar a pagina desejada.')
+            return redirect('index')
