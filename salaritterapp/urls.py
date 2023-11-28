@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('materia/', include('materia.urls')),
-    #path('turma/', include('turma.urls', namespace='turma')),
+    path('turma_endpoints/', include('turma.urls')),
     #path('usuarios/', include('usuarios.urls', namespace='usuarios')),
 ]
