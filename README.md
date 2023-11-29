@@ -1,5 +1,5 @@
-# A3_DevWeb_SalaRitter
-Projeto A3 da Faculdade
+# SalaRitter
+Desenvolvimento de um sistema de administração escolar, permitindo o cadastro de alunos, professores, turmas, matérias e atividades. A implementação é realizada no framework Django, com a integração do REST para a criação de endpoints. O banco de dados utilizado é o PostgreSQL.
 
 # Prototipo
 https://www.figma.com/file/XWpR0UJxw0nxbYmLLMNbse/SalaRitter?type=design&node-id=0-1&mode=design
