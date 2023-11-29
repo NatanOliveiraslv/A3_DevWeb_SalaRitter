@@ -178,3 +178,26 @@ input {
     border-color: #75DA73;
 }
 
+span.meio {
+    padding-left: 12%;
+}
+
+span.status-entregue {
+    float: right;
+    font-size: 15px;
+    background-color: #57ff5761;
+    color: #026202;
+    width: 72px;
+    border-radius: 20px;
+    height: 25px;
+}
+
+span.status-pendente {
+    float: right;
+    font-size: 15px;
+    background-color: #a85cff61;
+    color: #600dfb;
+    width: 72px;
+    border-radius: 20px;
+    height: 25px;
+}

@@ -19,7 +19,11 @@
 {% for atividades in atividade %}
   <div class="center-content">
     <div class="atividades-alunos">
-      <button class="dropbtn" onclick="toggleContent(this)">{{ atividades.titulo }}</button>
+      {% if atividades.status == 'Entregue'%}
+        <button class="dropbtn" onclick="toggleContent(this)"><span class="meio">{{ atividades.titulo }}</span><span class="status-entregue">{{atividades.status}}</span></button>
+      {% else %}
+        <button class="dropbtn" onclick="toggleContent(this)"><span class="meio">{{ atividades.titulo }}</span><span class="status-pendente">{{atividades.status}}</span></button>
+      {% endif %}
       <div class="atividade-conteudo" id="conteudo">
         <div class="questao">
           <p>{{ atividades.descricao }}</p>
@@ -27,9 +31,13 @@
         <form method="post">
           {% csrf_token %}
           <div class="answer-form">
-            <textarea type="text" id="resposta" name="resposta" placeholder="Digite sua resposta..."></textarea>
-            <input type="hidden" name="id" value={{atividades.id}}>
-            <button id="enviarBtn">Enviar</button>
+            {% if atividades.status == 'Entregue'%}
+              <textarea type="text" id="resposta" name="resposta" readonly>Sua resposta: {{ atividades.resposta }}</textarea>
+            {% else %}
+              <textarea type="text" id="resposta" name="resposta" placeholder="Digite sua resposta..."></textarea>
+              <input type="hidden" name="id" value={{atividades.id}}>
+              <button id="enviarBtn">Enviar</button>
+            {% endif %}
           </div>
         </form>
       </div>
