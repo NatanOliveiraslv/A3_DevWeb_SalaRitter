@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('api/materia/', include('materia.urls')),
     path('api/turma/', include('turma.urls')),
-    #path('usuarios/', include('usuarios.urls', namespace='usuarios')),
+    path('api/atividades/', include('atividades.urls')),
+    path('api/atividades/concluidas/', include('atividades.urls')),
 ]
