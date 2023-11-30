@@ -131,7 +131,7 @@ def painelTurmasCadastraAtividade(request, turma_id):
 
                     nova_atividade.save()
                     messages.success(request, 'Atividade cadastrada com sucesso!') 
-                    return render(request, 'usuarios/professor/tela_controle_professor_cadatra_atividade.html', {'turma':turma})
+                    return redirect('CadastraAtividade', turma_id)
                 else:
                     return render(request, 'usuarios/professor/tela_controle_professor_cadatra_atividade.html', {'turma':turma})
             else:
@@ -152,9 +152,9 @@ def painelAlunoMateriaSelecao(request, materia_id):
                 aluno_autenticado = get_object_or_404(Aluno, user=request.user) #atribui a varaivel o aluno autenticado
                 aluno_autenticado_turma = aluno_autenticado.turma #atribui a varaivel a turma do aluno autenticado
                 materia = aluno_autenticado_turma.materias.all() #atribui a variavel todas as meterias da turma do aluno
-                atividades = Atividade.objects.filter(materia__id=materia_id, turma=aluno_autenticado_turma)
+                atividades = Atividade.objects.filter(materia__id=materia_id, turma=aluno_autenticado_turma) #atribui a variavel todas as atividades da materia e da turma
 
-                dados_atividades = []
+                dados_atividades = [] # variavel array, criada para que seja passado os dados para a pagina, no formato configurado
 
                 # Iterar sobre as atividades
                 for atividade in atividades:
@@ -165,7 +165,7 @@ def painelAlunoMateriaSelecao(request, materia_id):
                     except AtividadeConcluida.DoesNotExist:
                         atividade_concluida = None
                         status = 'Pendente'
-
+                    # Passa os dados, para a variavel dados_atividades
                     dados_atividades.append({
                         'titulo': atividade.titulo,
                         'descricao': atividade.descricao,
@@ -182,10 +182,9 @@ def painelAlunoMateriaSelecao(request, materia_id):
                     if(AtividadeConcluida.objects.all().filter(atividade = atividade_resposta, aluno = aluno_autenticado).first() is not None):
                         messages.error(request, 'Esta atividade já foi respondida')
                         print(AtividadeConcluida.objects.filter(atividade = atividade_resposta, aluno = aluno_autenticado) )
-                        return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado_turma,
-                                                                                                'materia':materia,
-                                                                                                'atividade':dados_atividades})
-                    #Caso nao tenha sido entregue a atividade, crea uma nova atividade conculida.
+                        return redirect('materiaAtividades', materia_id)
+                    
+                    #Caso nao tenha sido entregue a atividade, cria uma nova atividade conculida.
                     else:
                         atividade_concluida = AtividadeConcluida.objects.create(
                             resposta=resposta,
@@ -194,10 +193,9 @@ def painelAlunoMateriaSelecao(request, materia_id):
                         )
                         atividade_concluida.save()
 
-                        messages.success(request, 'Resposta enviada com sucesso!') 
-                        return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado_turma,
-                                                                                                    'materia':materia,
-                                                                                                    'atividade':dados_atividades})
+                        messages.success(request, 'Resposta enviada com sucesso!')
+                        return redirect('materiaAtividades', materia_id)
+        
                 #Se nao for Post a request
                 else:
                     return render(request, 'usuarios/aluno/painel_aluno_materia_selecao.html', {'turma':aluno_autenticado_turma,
@@ -219,10 +217,10 @@ def PainelTurmasAtividadesConcluidas(request,turma_id):
             if validaProfessor(usuario):
                 #da requisção passado captura o id da turma
                 turma = get_object_or_404(Turma, pk=turma_id) #atribui a variavel a turma com o id passado
-                professor_autenticado = get_object_or_404(Professor, user=request.user)
-                materia_professor = Materia.objects.get(professor=professor_autenticado)
-                atividade_professor = Atividade.objects.all().filter(materia=materia_professor, turma=turma)
-                atividade_conluida = AtividadeConcluida.objects.all()
+                professor_autenticado = get_object_or_404(Professor, user=request.user) #atribui a variavel o professor que está autenticado
+                materia_professor = Materia.objects.get(professor=professor_autenticado) #atribui as materia que tem o professor
+                atividade_professor = Atividade.objects.all().filter(materia=materia_professor, turma=turma) #atribui as atividades que sao da mesma materia do professor e da turma
+                atividade_conluida = AtividadeConcluida.objects.all() # obtem todas as atividades conculidas
 
                 return render(request, 'usuarios/professor/tela_controle_professor_atividades_concluidas.html', {'atividade': atividade_professor,
                                                                                                                  'atividade_conluida': atividade_conluida,
